@@ -69,7 +69,6 @@ function getRandomInt(min, max) {
 var hashh = window.location.hash.substr(getRandomInt(1,4));
 
 if (window.location.hash != "") {
-document.getElementById('lblVehicle').innerHTML = lblBike;
     $.getJSON(endpoint + "/" + hashh, function (data) {
         data = data["result"];
 
