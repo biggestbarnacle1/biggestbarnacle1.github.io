@@ -18,9 +18,14 @@
 <p><a href="https://biggestbarnacle1.github.io/">Refresh</a></p>
 
 
-<label for="vehicle" id="lblVehicle"></label><br />
+<p id="demo"></p>
+
 <script>
-document.getElementById('lblVehicle').innerHTML = lblBike;
+var carName = "Home Page";
+if (window.location.hash != "") {
+var carName = "Some Other Page";
+}
+document.getElementById("demo").innerHTML = carName;
 </script>
 
 </body>
