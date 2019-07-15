@@ -1,4 +1,4 @@
-var lblBike = ' ';
+
 var endpoint = "https://www.jsonstore.io/5234f7b5ed523f406fa03b5f254bee8d318f04f2ceac974f32c01103faad58a7";
 
 function geturl(){
