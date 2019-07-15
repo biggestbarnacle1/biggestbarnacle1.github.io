@@ -50,4 +50,4 @@ function shorturl(){
     genhash();
     send_request(longurl);
 }
-
+}
