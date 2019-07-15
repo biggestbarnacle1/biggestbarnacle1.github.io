@@ -80,11 +80,3 @@ document.getElementById('lblVehicle').innerHTML = lblBike;
     });
 }
 
-function setText(){
-	if (window.location.hash != "") {
-		var lblBike = 'You are being redirected...';
-	}
-	else {
-	var lblBike = ' ';
-}
-}
