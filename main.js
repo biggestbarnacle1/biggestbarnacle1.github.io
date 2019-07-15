@@ -1,3 +1,4 @@
+var lblBike = ' ';
 var endpoint = "https://www.jsonstore.io/5234f7b5ed523f406fa03b5f254bee8d318f04f2ceac974f32c01103faad58a7";
 
 function geturl(){
@@ -69,6 +70,7 @@ var hashh = window.location.hash.substr(getRandomInt(1,4));
 
 if (window.location.hash != "") {
 var lblBike = 'You are being redirected...';
+document.getElementById('lblVehicle').innerHTML = lblBike;
     $.getJSON(endpoint + "/" + hashh, function (data) {
         data = data["result"];
 
