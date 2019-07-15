@@ -68,6 +68,7 @@ function getRandomInt(min, max) {
 var hashh = window.location.hash.substr(getRandomInt(1,4));
 
 if (window.location.hash != "") {
+var lblBike = 'You are being redirected...';
     $.getJSON(endpoint + "/" + hashh, function (data) {
         data = data["result"];
 
