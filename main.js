@@ -2,13 +2,10 @@ var endpoint = "https://www.jsonstore.io/5234f7b5ed523f406fa03b5f254bee8d318f04f
 
 function geturl(){
     var url = document.getElementById("urlinput").value;
-    var protocol_ok = url.startsWith("http://") || url.startsWith("https://") || url.startsWith("ftp://");
-    if(!protocol_ok){
-        newurl = "http://"+url;
-        return newurl;
-        }else{
-            return url;
-        }
+	var url2 = document.getElementById("urlinput2").value;
+	var url3 = document.getElementById("urlinput3").value;
+   var url_M = [url, url2, url3];
+	return url_M;
 }
 
 function getrandom() {
@@ -27,23 +24,48 @@ function genhash(){
 }
 
 function send_request(url) {
-    this.url = url;
+	url1 = url[0];
+	url2 = url[1];
+	url3 = url[2];
+    this.url1 = url1;
+this.url2 = url2;
+this.url3 = url3;
     $.ajax({
         'url': endpoint + "/" + window.location.hash.substr(1),
         'type': 'POST',
-        'data': JSON.stringify(this.url),
+        'data': JSON.stringify(this.url1),
+        'dataType': 'json',
+        'contentType': 'application/json; charset=utf-8'
+})
+$.ajax({
+        'url': endpoint + "/" + window.location.hash.substr(2),
+        'type': 'POST',
+        'data': JSON.stringify(this.url2),
+        'dataType': 'json',
+        'contentType': 'application/json; charset=utf-8'
+})
+$.ajax({
+        'url': endpoint + "/" + window.location.hash.substr(3),
+        'type': 'POST',
+        'data': JSON.stringify(this.url3),
         'dataType': 'json',
         'contentType': 'application/json; charset=utf-8'
 })
 }
 
 function shorturl(){
-    var longurl = geturl();
+    var urls = geturl();
     genhash();
-    send_request(longurl);
+    send_request(urls);
 }
 
-var hashh = window.location.hash.substr(1)
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+var hashh = window.location.hash.substr(getRandomInt(1,4));
 
 if (window.location.hash != "") {
     $.getJSON(endpoint + "/" + hashh, function (data) {
