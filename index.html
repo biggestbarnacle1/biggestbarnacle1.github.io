@@ -1,33 +1,43 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Link Combiner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-
-<h1> Random Link Chooser by biggestbarnacle </h1>
-<h2> This page allows you to enter exactly 3 links. It will then generate a link for you that chooses one of those links randomly. </h2>
- 	<input type="url" id="urlinput">
+    <nav><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+       
+    </ul></nav>
+    <h1> Random Link Chooser </h1>
+    <div class="content">
+    
+    <h3> This page allows you to enter multiple links, and will generate a URL that will redirect to a random entered URL </h3>
+    <div> Enter the links:</div>
+    <input type="url" id="urlinput">
 	<input type="url" id="urlinput2">
 	<input type="url" id="urlinput3">
         <button onclick="shorturl()">Bundle into one URL</button>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="main.js"></script>
 
-<h3> Your link will be available in the address bar after you click the button </h3>
-<p> Questions, comments, concerns? Contact developber.accounp@gmail.com </p>
-<p><a href="https://biggestbarnacle1.github.io/">Refresh</a></p>
+    <h4> Your link will be available in the address bar after you click the button </h4>
+  
+    <p><a href="https://biggestbarnacle1.github.io/">Refresh</a></p>
+    <h3 style="color:red;"><font size = "36"><p id="demo"></p></font></h3>
 
-
-<h1 style="color:red;"><font size = "36"><p id="demo"></p></font></h1>
-
-<script>
-var carName = " ";
-if (window.location.hash != "") {
-var carName = "You are being redirected...";
-}
-document.getElementById("demo").innerHTML = carName;
-</script>
-
+    <script>
+    var carName = " ";
+    if (window.location.hash != "") {
+    var carName = "You are being redirected...";
+    }
+    document.getElementById("demo").innerHTML = carName;
+    </script>
+    
+</div>
 </body>
-
 </html>

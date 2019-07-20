@@ -1,0 +1,48 @@
+body{
+    background: rgb(0, 0, 0);
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    color: white;
+   
+    
+}
+
+h1{
+    color:rgb(182, 230, 198);
+    max-width: 500px;
+    margin: auto;
+    background: rgb(56, 8, 8);
+    padding: 25px;
+    border-radius: 100px;
+    text-align: center;
+    
+}
+
+button{
+    background: rgb(255, 140, 140);
+    border-radius: 25px;
+}
+.content{
+    max-width: 500px;
+    margin: auto;
+    background: rgb(24, 7, 36);
+    padding: 50px 100px 50px 100px;
+    border-radius: 50px;
+    color: rgb(211, 195, 195);
+}
+nav{
+    max-width: 1000px;
+    margin: auto;
+    text-align: right;
+    font-size: 20px;
+    
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+li{
+    display: inline-block;
+    margin: 20px;
+}
