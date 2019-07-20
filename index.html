@@ -4,30 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Link Combiner</title>
+    <title>Random Link Chooser</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav><ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="https://biggestbarnacle1.github.io/">Home</a></li>
         <li><a href="about.html">About</a></li>
        
     </ul></nav>
     <h1> Random Link Chooser </h1>
     <div class="content">
-    
     <h3> This page allows you to enter multiple links, and will generate a URL that will redirect to a random entered URL </h3>
-    <div> Enter the links:</div>
+    <input type="text" id="folderinput" style="width:100%!important;" tabindex="1" placeholder="Folder name">
+    <div>  </div>
+    <textarea class="firstmirror" style="width:100%!important;" data-textarea-id="t_9685F93175_0" id="folderlinks" tabindex="1" placeholder="Links" name="mirror[9685F93175][]" spellcheck="false"></textarea>
     <input type="url" id="urlinput">
 	<input type="url" id="urlinput2">
-	<input type="url" id="urlinput3">
-        <button onclick="shorturl()">Bundle into one URL</button>
+    <input type="url" id="urlinput3">
+    <div style="text-align: center;">
+        <button onclick="shorturl()"><h3>Bundle into one URL</h3></button>
+   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="main.js"></script>
 
-    <h4> Your link will be available in the address bar after you click the button </h4>
-  
-    <p><a href="https://biggestbarnacle1.github.io/">Refresh</a></p>
+    <h5> Your link will be available in the address bar after you click the button </h5>
+</div>
+
     <h3 style="color:red;"><font size = "36"><p id="demo"></p></font></h3>
 
     <script>

@@ -18,8 +18,10 @@ h1{
 }
 
 button{
-    background: rgb(255, 140, 140);
-    border-radius: 25px;
+    background: rgb(42, 202, 103);
+    border-radius: 5px;
+    margin: 20px;
+    
 }
 .content{
     max-width: 500px;
@@ -46,3 +48,9 @@ li{
     display: inline-block;
     margin: 20px;
 }
+textarea{
+    height:100%;
+    min-height: 100px;
+    margin: 20px 0px;
+}
+
