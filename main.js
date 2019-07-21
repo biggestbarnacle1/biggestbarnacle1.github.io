@@ -1,4 +1,4 @@
-var endpoint = "https://www.jsonstore.io/5234f7b5ed523f406fa03b5f254bee8d318f04f2ceac974f32c01103faad58a7";
+var endpoint = "https://www.jsonstore.io/bf4e60165117c73916d2fccefab9b9e0b003884543243585393b9f8632b1ce73";
 
 function geturl(){
     var lines = $('textarea').val().split('\n');
@@ -9,7 +9,7 @@ function getrandom() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 20; i++)
+    for (var i = 0; i < 105; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
 }
@@ -22,16 +22,9 @@ function genhash(){
 
 function send_request(lines) {
 
-    $.ajax({
-        'url': endpoint + "/" + window.location.hash.substr(1),
-        'type': 'POST',
-        'data': JSON.stringify(this.lines.length),
-        'dataType': 'json',
-        'contentType': 'application/json; charset=utf-8'
-})
     for(var i = 0;i < lines.length;i++){
         my_url = lines[i];
-        this.my_url = lines[i];
+        this.my_url = my_url;
         $.ajax({
             'url': endpoint + "/" + window.location.hash.substr(i+1) + "-" + (i+1),
             'type': 'POST',
@@ -47,9 +40,21 @@ function shorturl(){
     if (urls == "") {
         alert("No links entered!")
     }
-    else {
-    genhash();
-    send_request(urls);
+    else if (urls.length > 99) {
+        alert("A maximum of 99 links are allowed!")
+        
+    }
+    else if (window.location.hash != ""){
+        alert("A link has already been generated!")
+
+    } else {
+        genhash();
+        var folder_name = document.getElementById("folderinput").value;
+        alert(folder_name);
+        var encoded_folder = window.btoa(folder_name);
+        alert(encoded_folder);
+        window.location.hash = "-" + urls.length + "-" + window.location.hash + "@" + encoded_folder;
+        send_request(urls);
     }
 }
 
@@ -59,23 +64,60 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
+
 if (window.location.hash != "") {
-    var hashh_number = window.location.hash.substr(1);
 
-    $.getJSON(endpoint + "/" + hashh_number, function (data) {
-        data = data["result"];
-
-    });
-    random_number = getRandomInt(1,data);
+    number = window.location.hash.substring(2,4)
+    number = number.replace(/\D/g,'');
+    random_number = Math.round(Math.random() * (number-1)) + 1;
     var hashh = window.location.hash.substr(random_number);
+    var encode_location = window.location.href.indexOf("@");
+    var decoded_folder = window.atob(window.location.href.substring(encode_location+1));
 
     $.getJSON(endpoint + "/" + hashh + "-" + random_number, function (data) {
         data = data["result"];
 
+        document.getElementById("folder_name").innerHTML = decoded_folder;
+        document.getElementById("redirect_info").innerHTML = "You are being redirected to:";
+        document.getElementById("redirect_info").style.fontSize = "25px";
+        document.getElementById("redirect_url").innerHTML = data;
+        document.getElementById("redirect_url").style.fontSize = "30px";
+        document.getElementById("redirect_url").style.color = 'red';
+        document.getElementById("button_click").innerHTML = "5";
+        document.getElementById("folderinput").outerHTML = "";
+        document.getElementById("folderlinks").outerHTML = "";
+        document.getElementById("button_click").style.fontSize = "36px";
+
         if (data != null) {
-            window.location.href = data;
+            setTimeout(function(){
+                document.getElementById("button_click").innerHTML = "4";
+                setTimeout(function(){
+                    document.getElementById("button_click").innerHTML = "3";
+                    setTimeout(function(){
+                        document.getElementById("button_click").innerHTML = "2";
+                        setTimeout(function(){
+                            document.getElementById("button_click").innerHTML = "1";
+                            setTimeout(function(){
+                                document.getElementById("button_click").innerHTML = "0";
+                                window.location.href = data;
+                                }, 1000);
+                            
+                            }, 1000);
+                            
+                        
+                        }, 1000);
+                        
+            
+                
+                    }, 1000);
+                   
+           
+            }, 1000);
+
+           
         }
 
     });
 }
+
 

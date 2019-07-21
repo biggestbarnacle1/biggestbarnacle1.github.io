@@ -13,33 +13,23 @@
         <li><a href="about.html">About</a></li>
        
     </ul></nav>
-    <h1> Random Link Chooser </h1>
-    <div class="content">
-    <h3> This page allows you to enter multiple links, and will generate a URL that will redirect to a random entered URL </h3>
+    <h1 id="folder_name"> Random Link Chooser </h1>
+    <div style="text-align: center;" class="content">
+    <h3 id="redirect_info"> This page allows you to enter multiple links, and will generate a URL that will redirect to a random entered URL </h3>
     <input type="text" id="folderinput" style="width:100%!important;" tabindex="1" placeholder="Folder name">
     <div>  </div>
     <textarea class="firstmirror" style="width:100%!important;" data-textarea-id="t_9685F93175_0" id="folderlinks" tabindex="1" placeholder="Links" name="mirror[9685F93175][]" spellcheck="false"></textarea>
-    <input type="url" id="urlinput">
-	<input type="url" id="urlinput2">
-    <input type="url" id="urlinput3">
-    <div style="text-align: center;">
-        <button onclick="shorturl()"><h3>Bundle into one URL</h3></button>
-   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="main.js"></script>
+ 
+    <h5 id="redirect_url"> Your link will be available in the address bar after you click the button </h5>
+        <button id = "button_click" onclick="shorturl()"><h3>Bundle into one URL</h3></button>
 
-    <h5> Your link will be available in the address bar after you click the button </h5>
-</div>
+    
+
 
     <h3 style="color:red;"><font size = "36"><p id="demo"></p></font></h3>
 
-    <script>
-    var carName = " ";
-    if (window.location.hash != "") {
-    var carName = "You are being redirected...";
-    }
-    document.getElementById("demo").innerHTML = carName;
-    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="main.js"></script>
     
 </div>
 </body>

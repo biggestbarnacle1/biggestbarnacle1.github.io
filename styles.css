@@ -14,13 +14,14 @@ h1{
     padding: 25px;
     border-radius: 100px;
     text-align: center;
+    overflow-wrap: break-word;
     
 }
 
 button{
     background: rgb(42, 202, 103);
     border-radius: 5px;
-    margin: 20px;
+    margin: 10px;
     
 }
 .content{
@@ -53,4 +54,11 @@ textarea{
     min-height: 100px;
     margin: 20px 0px;
 }
+input{
+    min-height: 20px;
+}
+h5{
+    overflow-wrap: break-word;
+}
+
 
