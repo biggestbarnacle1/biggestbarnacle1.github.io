@@ -50,9 +50,7 @@ function shorturl(){
     } else {
         genhash();
         var folder_name = document.getElementById("folderinput").value;
-        alert(folder_name);
         var encoded_folder = window.btoa(folder_name);
-        alert(encoded_folder);
         window.location.hash = "-" + urls.length + "-" + window.location.hash + "@" + encoded_folder;
         send_request(urls);
     }
