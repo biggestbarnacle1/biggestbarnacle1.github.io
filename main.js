@@ -9,7 +9,7 @@ function getrandom() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 105; i++)
+    for (var i = 0; i < 20; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
 }
@@ -26,7 +26,7 @@ function send_request(lines) {
         my_url = lines[i];
         this.my_url = my_url;
         $.ajax({
-            'url': endpoint + "/" + window.location.hash.substr(i+1) + "-" + (i+1),
+            'url': endpoint + "/" + window.location.hash.substr(1) + "-" + (i+1),
             'type': 'POST',
             'data': JSON.stringify(this.my_url),
             'dataType': 'json',
@@ -39,6 +39,9 @@ function shorturl(){
     var urls = geturl();
     if (urls == "") {
         alert("No links entered!")
+    }
+    else if(document.getElementById("folderinput").value == ""){
+        alert("No name entered!")
     }
     else if (urls.length > 99) {
         alert("A maximum of 99 links are allowed!")
@@ -68,7 +71,7 @@ if (window.location.hash != "") {
     number = window.location.hash.substring(2,4)
     number = number.replace(/\D/g,'');
     random_number = Math.round(Math.random() * (number-1)) + 1;
-    var hashh = window.location.hash.substr(random_number);
+    var hashh = window.location.hash.substr(1);
     var encode_location = window.location.href.indexOf("@");
     var decoded_folder = window.atob(window.location.href.substring(encode_location+1));
 
