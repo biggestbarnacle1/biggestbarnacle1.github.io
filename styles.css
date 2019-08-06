@@ -12,7 +12,7 @@ h1{
     margin: auto;
     background: rgb(56, 8, 8);
     padding: 25px;
-    border-radius: 100px;
+    border-radius: 50px;
     text-align: center;
     overflow-wrap: break-word;
     
@@ -28,7 +28,7 @@ button{
     max-width: 500px;
     margin: auto;
     background: rgb(24, 7, 36);
-    padding: 50px 100px 50px 100px;
+    padding: 30px 75px 1px 75px;
     border-radius: 50px;
     color: rgb(211, 195, 195);
 }

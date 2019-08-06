@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Random Link Chooser</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
     <nav><ul>
         <li><a href="https://biggestbarnacle1.github.io/">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="about.php">About</a></li>
      
     <script type="text/javascript" src="//uprimp.com/slider.php?section=General&pub=481146&ga=g&side=right"></script>
     <script type="text/javascript" src="//goraps.com/pup.php?section=General&pt=2&pub=481146&ga=g"></script>
@@ -20,10 +21,14 @@
     <h3 id="redirect_info"> This page allows you to enter multiple links, and will generate a URL that will redirect to a random entered URL </h3>
     <input type="text" id="folderinput" style="width:100%!important;" tabindex="1" placeholder="Folder name">
     <div>  </div>
+    
     <textarea class="firstmirror" style="width:100%!important;" data-textarea-id="t_9685F93175_0" id="folderlinks" tabindex="1" placeholder="Links" name="mirror[9685F93175][]" spellcheck="false"></textarea>
  
     <h5 id="redirect_url"> Your link will be available in the address bar after you click the button </h5>
-        <button id = "button_click" onclick="shorturl()"><h3>Bundle into one URL</h3></button>
+    <form id="myForm" class="form">
+        <div class="h-captcha" id="h-captcha-post" data-sitekey="150ab174-bc6a-4063-beca-b24045b03440"></div>
+    </form>
+        <button type = "submit" id = "button_click" onclick="shorturl()"><h3>Bundle into one URL</h3></button>
 
     
 
