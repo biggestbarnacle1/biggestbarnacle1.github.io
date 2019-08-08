@@ -34,14 +34,14 @@
         <script>
         var correctCaptcha = function(response) {
         alert(response);
-        var token23 = response;
+        window.token23 = response;
         };
         function verify_captcha(){
             var SECRET_KEY = "0xe142823E10f1bdd175c67608A96f30514151EeCA";
             //var token23 = $("form[name=captcha-form]").serialize();
             var c_endpoint = "https://hcaptcha.com/siteverify";
-            alert(token23)
-            data_captcha = {'secret': SECRET_KEY, 'response': token23}
+            alert(window.token23)
+            data_captcha = {'secret': SECRET_KEY, 'response': window.token23}
             $.ajax({
                  url: c_endpoint,
                  type: "POST",
