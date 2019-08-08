@@ -32,9 +32,11 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
+        window.has_solved = false;
         var correctCaptcha = function(response) {
         alert(response);
         window.token23 = response;
+        window.has_solved = true;
         };
         function verify_captcha(){
             var SECRET_KEY = "0xe142823E10f1bdd175c67608A96f30514151EeCA";
@@ -57,6 +59,9 @@
             var data = $("form[name=algoForm]").serialize();
             if(document.getElementById("message_area").value.trim() == ""){
                 alert("Nothing entered!")
+            }
+            else if(window.has_solved == false){
+                alert("Please solve the Captcha");
             }
             else{
             $.ajax({
