@@ -1,30 +1,39 @@
 var endpoint = "https://www.jsonstore.io/53a1d30c87ebcf20fe94b042be1ab6ad581c87ebe44baa7daeb665731f78fb40";
 window.has_solved = false;
+window.has_solved_index = false;
 
-        var correctCaptcha = function(response) {
-        window.token23 = response;
-        window.has_solved = true;
-        };
-        
-        function contact_us(){
-            var data = $("form[name=algoForm]").serialize();
-            if(document.getElementById("message_area").value.trim() == ""){
-                alert("Nothing entered!")
-            }
-            else if(window.has_solved == false){
-                alert("Please solve the Captcha");
-            }
-            else{
-            $.ajax({
-                 url: "https://script.google.com/macros/s/AKfycbyb2E3kgUvkuK7d4OGIsQ8KkrD4ZUTsW3i0ytYjsg/exec",
-                 type: "POST",
-                 data: data,
-        })
-        alert("Thank you for contacting me!")
-        location.reload();
-        
+var correctCaptcha = function(response) {
+window.has_solved = true;
+};
+
+var correctCaptcha_index = function(response) {
+    if (window.location.hash != "") {
+        redirect_person();
     }
+    else{
+        window.has_solved_index = true;
+    }
+};
+
+function contact_us(){
+    var data = $("form[name=algoForm]").serialize();
+    if(document.getElementById("message_area").value.trim() == ""){
+        alert("Nothing entered!")
+    }
+    else if(window.has_solved == false){
+        alert("Please solve the Captcha");
+    }
+    else{
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbyb2E3kgUvkuK7d4OGIsQ8KkrD4ZUTsW3i0ytYjsg/exec",
+            type: "POST",
+            data: data,
+        })
+    alert("Thank you for contacting me!")
+    location.reload();
+            
         }
+}
 
 if(window.location.href == "https://biggestbarnacle1.github.io/index.html"){
     window.location.href = "https://biggestbarnacle1.github.io";
@@ -81,7 +90,8 @@ function shorturl(){
         alert("A link has already been generated!")
 
     }
-    else if (false){
+    else if (window.has_solved_index == false){
+        alert("Please solve the Captcha")
 
     } else {
         genhash();
@@ -117,41 +127,42 @@ if (window.location.hash != "") {
         document.getElementById("redirect_url").innerHTML = data;
         document.getElementById("redirect_url").style.fontSize = "30px";
         document.getElementById("redirect_url").style.color = 'red';
-        document.getElementById("button_click").innerHTML = "5";
+        document.getElementById("button_click").innerHTML = "Solve the Captcha";
         document.getElementById("folderinput").outerHTML = "";
         document.getElementById("folderlinks").outerHTML = "";
         document.getElementById("button_click").style.fontSize = "36px";
 
-        if (data != null) {
-            setTimeout(function(){
-                document.getElementById("button_click").innerHTML = "4";
-                setTimeout(function(){
-                    document.getElementById("button_click").innerHTML = "3";
-                    setTimeout(function(){
-                        document.getElementById("button_click").innerHTML = "2";
-                        setTimeout(function(){
-                            document.getElementById("button_click").innerHTML = "1";
-                            setTimeout(function(){
-                                document.getElementById("button_click").innerHTML = "0";
-                                window.location.href = data;
-                                }, 1000);
-                            
-                            }, 1000);
-                            
-                        
-                        }, 1000);
-                        
-            
-                
-                    }, 1000);
-                   
-           
-            }, 1000);
-
-           
-        }
-
     });
 }
 
+function redirect_person(){
+    setTimeout(function(){
+        document.getElementById("button_click").innerHTML = "5";
+        setTimeout(function(){
+            document.getElementById("button_click").innerHTML = "4";
+            setTimeout(function(){
+                document.getElementById("button_click").innerHTML = "3";
+                setTimeout(function(){
+                    document.getElementById("button_click").innerHTML = "2";
+                    setTimeout(function(){
+                        document.getElementById("button_click").innerHTML = "1";
+                        setTimeout(function(){
+                            document.getElementById("button_click").innerHTML = "0";
+                            window.location.href = data;
+                            }, 1000);
+                        
+                        }, 1000);
+                        
+                    
+                    }, 1000);
+                    
+        
+            
+                }, 1000);
+               
+       
+        }, 1000);
+    }, 1000);
+
+}
 
