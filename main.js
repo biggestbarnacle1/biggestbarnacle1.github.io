@@ -75,30 +75,32 @@ function send_request(lines) {
 }
 
 function shorturl(){
-    var urls = geturl();
-    if (urls == "") {
-        alert("No links entered!")
-    }
-    else if(document.getElementById("folderinput").value.trim() == ""){
-        alert("No name entered!")
-    }
-    else if (urls.length > 20) {
-        alert("A maximum of 20 links are allowed!")
-        
-    }
-    else if (window.location.hash != ""){
-        alert("A link has already been generated!")
+    if (window.location.hash == "") {
+        var urls = geturl();
+        if (urls == "") {
+            alert("No links entered!")
+        }
+        else if(document.getElementById("folderinput").value.trim() == ""){
+            alert("No name entered!")
+        }
+        else if (urls.length > 20) {
+            alert("A maximum of 20 links are allowed!")
+            
+        }
+        else if (window.location.hash != ""){
+            alert("A link has already been generated!")
 
-    }
-    else if (window.has_solved_index == false){
-        alert("Please solve the Captcha")
+        }
+        else if (window.has_solved_index == false){
+            alert("Please solve the Captcha")
 
-    } else {
-        genhash();
-        var folder_name = document.getElementById("folderinput").value;
-        var encoded_folder = window.btoa(folder_name);
-        window.location.hash = "/" + urls.length + "/" + window.location.hash + "@" + encoded_folder;
-        send_request(urls);
+        } else {
+            genhash();
+            var folder_name = document.getElementById("folderinput").value;
+            var encoded_folder = window.btoa(folder_name);
+            window.location.hash = "/" + urls.length + "/" + window.location.hash + "@" + encoded_folder;
+            send_request(urls);
+        }
     }
 }
 
@@ -120,11 +122,13 @@ if (window.location.hash != "") {
 
     $.getJSON(endpoint + "/" + hashh + "/" + random_number, function (data) {
         window.data_link = data["result"];
+        lc = window.data_link.indexOf("/", 8);
+        temp_display = window.data_link.substring(0, lc);
 
         document.getElementById("folder_name").innerHTML = decoded_folder;
         document.getElementById("redirect_info").innerHTML = "You are being redirected to:";
         document.getElementById("redirect_info").style.fontSize = "25px";
-        document.getElementById("redirect_url").innerHTML = window.data_link;
+        document.getElementById("redirect_url").innerHTML = temp_display;
         document.getElementById("redirect_url").style.fontSize = "30px";
         document.getElementById("redirect_url").style.color = 'red';
         document.getElementById("button_click").innerHTML = "Solve the Captcha";
