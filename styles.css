@@ -32,6 +32,14 @@ button{
     border-radius: 50px;
     color: rgb(211, 195, 195);
 }
+.about-content{
+    max-width: 500px;
+    margin: auto;
+    background: rgb(24, 7, 36);
+    padding: 30px 75px 50px 75px;
+    border-radius: 50px;
+    color: rgb(211, 195, 195);
+}
 nav{
     max-width: 1000px;
     margin: auto;

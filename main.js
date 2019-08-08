@@ -1,6 +1,10 @@
 var endpoint = "https://www.jsonstore.io/53a1d30c87ebcf20fe94b042be1ab6ad581c87ebe44baa7daeb665731f78fb40";
 var c_endpoint = "https://hcaptcha.com/siteverify";
 
+if(window.location.href == "https://biggestbarnacle1.github.io/index.html"){
+    window.location.href = "https://biggestbarnacle1.github.io";
+}
+
 function geturl(){
     var lines = $('textarea').val().split('\n');
 	return lines;
@@ -38,10 +42,10 @@ function send_request(lines) {
 
 function shorturl(){
     var urls = geturl();
-    if (urls == "") {
+    if (urls.trim() == "") {
         alert("No links entered!")
     }
-    else if(document.getElementById("folderinput").value == ""){
+    else if(document.getElementById("folderinput").value.trim() == ""){
         alert("No name entered!")
     }
     else if (urls.length > 20) {

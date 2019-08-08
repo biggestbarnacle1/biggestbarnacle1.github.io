@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contact - Random Link Chooser</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+    <nav><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+       
+    </ul></nav>
+    <h1> Contact </h1>
+    <div style="text-align: center;" class="about-content";>
+    
+    <p> Any questions, comments, or concerns can be inputted in the comment box below. If you would like a response, be sure to include your email address </p>
+    <form name="algoForm" id="gform" >
+            <textarea id="message_area" name="message" style="width:100%!important;" placeholder="Enter your message to me here"></textarea>
+            
+        </form>
+        <form method="POST" action="https://hcaptcha.com/siteverify" name="captcha-form">
+        <div class="h-captcha" data-sitekey="291bae3c-0af7-4c99-b045-1cef8bf8d6c4" data-callback="correctCaptcha"></div>
+        <input type="button" onclick="verify_captcha()" value="Submit">
+        </form>
+        <button type = "submit" id = "contact" onclick="contact_us()"><h3>Contact me!</h3></button>
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+        var correctCaptcha = function(response) {
+        alert(response);
+        };
+        function verify_captcha(){
+            var token23 = $("form[name=captcha-form]").serialize();
+            alert(token23)
+        }
+        
+        function contact_us(){
+            var data = $("form[name=algoForm]").serialize();
+            if(document.getElementById("message_area").value.trim() == ""){
+                alert("Nothing entered!")
+            }
+            else{
+            $.ajax({
+                 url: "https://script.google.com/macros/s/AKfycbyb2E3kgUvkuK7d4OGIsQ8KkrD4ZUTsW3i0ytYjsg/exec",
+                 type: "POST",
+                 data: data,
+        })
+        document.getElementById("message_area").value = " ";
+        alert("Thank you for contacting me!")
+        
+    }
+        }
+      
+        </script>
+        
+</div>
+</body>
+</html>
