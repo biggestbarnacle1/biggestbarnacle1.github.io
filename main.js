@@ -42,7 +42,7 @@ function send_request(lines) {
 
 function shorturl(){
     var urls = geturl();
-    if (urls.trim() == "") {
+    if (urls == "") {
         alert("No links entered!")
     }
     else if(document.getElementById("folderinput").value.trim() == ""){
