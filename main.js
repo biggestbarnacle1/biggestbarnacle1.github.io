@@ -1,4 +1,30 @@
 var endpoint = "https://www.jsonstore.io/53a1d30c87ebcf20fe94b042be1ab6ad581c87ebe44baa7daeb665731f78fb40";
+window.has_solved = false;
+
+        var correctCaptcha = function(response) {
+        window.token23 = response;
+        window.has_solved = true;
+        };
+        
+        function contact_us(){
+            var data = $("form[name=algoForm]").serialize();
+            if(document.getElementById("message_area").value.trim() == ""){
+                alert("Nothing entered!")
+            }
+            else if(window.has_solved == false){
+                alert("Please solve the Captcha");
+            }
+            else{
+            $.ajax({
+                 url: "https://script.google.com/macros/s/AKfycbyb2E3kgUvkuK7d4OGIsQ8KkrD4ZUTsW3i0ytYjsg/exec",
+                 type: "POST",
+                 data: data,
+        })
+        alert("Thank you for contacting me!")
+        location.reload();
+        
+    }
+        }
 
 if(window.location.href == "https://biggestbarnacle1.github.io/index.html"){
     window.location.href = "https://biggestbarnacle1.github.io";
