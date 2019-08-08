@@ -122,13 +122,14 @@ if (window.location.hash != "") {
 
     $.getJSON(endpoint + "/" + hashh + "/" + random_number, function (data) {
         window.data_link = data["result"];
-        lc = window.data_link.indexOf("/", 8);
-        temp_display = window.data_link.substring(0, lc);
+        var lc = window.data_link.indexOf("/", 8)+1;
+        var temp_display = window.data_link.substring(0, lc);
+        var display_link = temp_display.concat("...");
 
         document.getElementById("folder_name").innerHTML = decoded_folder;
         document.getElementById("redirect_info").innerHTML = "You are being redirected to:";
         document.getElementById("redirect_info").style.fontSize = "25px";
-        document.getElementById("redirect_url").innerHTML = temp_display;
+        document.getElementById("redirect_url").innerHTML = display_link;
         document.getElementById("redirect_url").style.fontSize = "30px";
         document.getElementById("redirect_url").style.color = 'red';
         document.getElementById("button_click").innerHTML = "Solve the Captcha";
