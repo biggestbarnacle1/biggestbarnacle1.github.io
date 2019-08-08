@@ -119,12 +119,12 @@ if (window.location.hash != "") {
     var decoded_folder = window.atob(window.location.href.substring(encode_location+1));
 
     $.getJSON(endpoint + "/" + hashh + "/" + random_number, function (data) {
-        data = data["result"];
+        window.data_link = data["result"];
 
         document.getElementById("folder_name").innerHTML = decoded_folder;
         document.getElementById("redirect_info").innerHTML = "You are being redirected to:";
         document.getElementById("redirect_info").style.fontSize = "25px";
-        document.getElementById("redirect_url").innerHTML = data;
+        document.getElementById("redirect_url").innerHTML = window.data_link;
         document.getElementById("redirect_url").style.fontSize = "30px";
         document.getElementById("redirect_url").style.color = 'red';
         document.getElementById("button_click").innerHTML = "Solve the Captcha";
@@ -148,7 +148,7 @@ function redirect_person(){
                         document.getElementById("button_click").innerHTML = "1";
                         setTimeout(function(){
                             document.getElementById("button_click").innerHTML = "0";
-                            window.location.href = data;
+                            window.location.href = window.data_link;
                             }, 1000);
                         
                         }, 1000);
